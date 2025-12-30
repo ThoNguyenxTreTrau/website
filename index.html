@@ -29,15 +29,17 @@
         }
         
         .banner {
-            background: linear-gradient(to bottom right, #0056b3, #003366);
+            /* SỬA ĐỔI: Thay ảnh nền rừng cây và thêm lớp phủ đen mờ để đọc được chữ */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKyqG308vd3LRrRz2RJesfNXtBdAd_cR3new&s');
+            background-size: cover;
+            background-position: center;
             color: white;
-            padding: 35px 0;
+            padding: 50px 0; /* Tăng chiều cao một chút cho đẹp */
             text-align: center;
-            /* Ảnh nền hoa văn nhẹ */
-            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
         }
-        .banner h1 { margin: 0; text-transform: uppercase; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); font-size: 26px; letter-spacing: 1px; }
-        .banner p { margin: 8px 0 0; font-size: 14px; opacity: 0.9; text-transform: uppercase; }
+        .banner h1 { margin: 0; text-transform: uppercase; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); font-size: 28px; letter-spacing: 1px; }
+        .banner p { margin: 10px 0 0; font-size: 15px; opacity: 0.9; text-transform: uppercase; font-weight: bold; }
 
         /* MENU */
         .nav-bar {
@@ -134,8 +136,9 @@
             background-color: #eee;
             overflow: hidden;
             border-radius: 3px;
+            border: 1px solid #eee;
         }
-        .news-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .news-thumb img { width: 100%; height: 100%; object-fit: contain; background: white; } /* Sửa object-fit để logo không bị cắt */
         
         .news-info h3 { margin: 0 0 5px; font-size: 15px; line-height: 1.4; }
         .news-info h3 a { color: #2c3e50; font-weight: bold; }
@@ -234,7 +237,7 @@
                     
                     <div class="news-item">
                         <div class="news-thumb">
-                            <img src="https://loremflickr.com/150/100/meeting,school?random=1" alt="Tin tuc">
+                            <img src="https://c3nguyendu.daklak.edu.vn/wp-content/uploads/Thumbcache/no-thumb-ndtlch98i0klffazxl4l42c9kedf8y1wnxbrs3mvzi.png" alt="Tin tuc">
                         </div>
                         <div class="news-info">
                             <h3><a href="#">Hội nghị Cán bộ, Viên chức năm học 2025-2026 thành công tốt đẹp</a></h3>
@@ -245,7 +248,7 @@
 
                     <div class="news-item">
                         <div class="news-thumb">
-                            <img src="https://loremflickr.com/150/100/exam,student?random=2" alt="Tin tuc">
+                            <img src="https://c3nguyendu.daklak.edu.vn/wp-content/uploads/Thumbcache/no-thumb-ndtlch98i0klffazxl4l42c9kedf8y1wnxbrs3mvzi.png" alt="Tin tuc">
                         </div>
                         <div class="news-info">
                             <h3><a href="#">Công bố danh sách Đội tuyển Học sinh giỏi Quốc gia năm 2026</a></h3>
@@ -256,7 +259,7 @@
 
                     <div class="news-item">
                         <div class="news-thumb">
-                            <img src="https://loremflickr.com/150/100/computer,class?random=3" alt="Tin tuc">
+                            <img src="https://c3nguyendu.daklak.edu.vn/wp-content/uploads/Thumbcache/no-thumb-ndtlch98i0klffazxl4l42c9kedf8y1wnxbrs3mvzi.png" alt="Tin tuc">
                         </div>
                         <div class="news-info">
                             <h3><a href="#">Triển khai đồng bộ hệ thống Microsoft 365 trong quản lý và dạy học</a></h3>
@@ -267,7 +270,7 @@
 
                     <div class="news-item">
                         <div class="news-thumb">
-                            <img src="https://loremflickr.com/150/100/soccer,sport?random=4" alt="Tin tuc">
+                            <img src="https://c3nguyendu.daklak.edu.vn/wp-content/uploads/Thumbcache/no-thumb-ndtlch98i0klffazxl4l42c9kedf8y1wnxbrs3mvzi.png" alt="Tin tuc">
                         </div>
                         <div class="news-info">
                             <h3><a href="#">Khai mạc Giải bóng đá nam học sinh chào mừng ngày 9/1</a></h3>
@@ -278,7 +281,7 @@
 
                     <div class="news-item">
                         <div class="news-thumb">
-                            <img src="https://loremflickr.com/150/100/vietnam,flag?random=5" alt="Tin tuc">
+                            <img src="https://c3nguyendu.daklak.edu.vn/wp-content/uploads/Thumbcache/no-thumb-ndtlch98i0klffazxl4l42c9kedf8y1wnxbrs3mvzi.png" alt="Tin tuc">
                         </div>
                         <div class="news-info">
                             <h3><a href="#">Lễ chào cờ đầu tuần và Sinh hoạt chủ điểm "Tự hào Việt Nam"</a></h3>
@@ -289,7 +292,7 @@
 
                     <div class="news-item">
                         <div class="news-thumb">
-                            <img src="https://loremflickr.com/150/100/tet,holiday?random=6" alt="Tin tuc">
+                            <img src="https://c3nguyendu.daklak.edu.vn/wp-content/uploads/Thumbcache/no-thumb-ndtlch98i0klffazxl4l42c9kedf8y1wnxbrs3mvzi.png" alt="Tin tuc">
                         </div>
                         <div class="news-info">
                             <h3><a href="#">Thông báo lịch nghỉ Tết Nguyên Đán Ất Tỵ 2025</a></h3>
@@ -300,7 +303,7 @@
 
                     <div class="news-item">
                         <div class="news-thumb">
-                            <img src="https://loremflickr.com/150/100/volunteer,group?random=7" alt="Tin tuc">
+                            <img src="https://c3nguyendu.daklak.edu.vn/wp-content/uploads/Thumbcache/no-thumb-ndtlch98i0klffazxl4l42c9kedf8y1wnxbrs3mvzi.png" alt="Tin tuc">
                         </div>
                         <div class="news-info">
                             <h3><a href="#">CLB Cộng đồng: Trao tặng 500 suất quà cho trẻ em vùng cao</a></h3>
@@ -311,7 +314,7 @@
 
                     <div class="news-item">
                         <div class="news-thumb">
-                            <img src="https://loremflickr.com/150/100/ielts,study?random=8" alt="Tin tuc">
+                            <img src="https://c3nguyendu.daklak.edu.vn/wp-content/uploads/Thumbcache/no-thumb-ndtlch98i0klffazxl4l42c9kedf8y1wnxbrs3mvzi.png" alt="Tin tuc">
                         </div>
                         <div class="news-info">
                             <h3><a href="#">Hội thảo: Chiến lược ôn thi IELTS 7.0+ cho học sinh THPT</a></h3>
@@ -322,7 +325,7 @@
 
                     <div class="news-item">
                         <div class="news-thumb">
-                            <img src="https://loremflickr.com/150/100/library,book?random=9" alt="Tin tuc">
+                            <img src="https://c3nguyendu.daklak.edu.vn/wp-content/uploads/Thumbcache/no-thumb-ndtlch98i0klffazxl4l42c9kedf8y1wnxbrs3mvzi.png" alt="Tin tuc">
                         </div>
                         <div class="news-info">
                             <h3><a href="#">Thư viện giới thiệu sách tháng 12: "Nhật ký Đặng Thùy Trâm"</a></h3>
@@ -333,7 +336,7 @@
 
                     <div class="news-item">
                         <div class="news-thumb">
-                            <img src="https://loremflickr.com/150/100/safety,fire?random=10" alt="Tin tuc">
+                            <img src="https://c3nguyendu.daklak.edu.vn/wp-content/uploads/Thumbcache/no-thumb-ndtlch98i0klffazxl4l42c9kedf8y1wnxbrs3mvzi.png" alt="Tin tuc">
                         </div>
                         <div class="news-info">
                             <h3><a href="#">Tập huấn kỹ năng Phòng cháy chữa cháy và Cứu nạn cứu hộ</a></h3>
@@ -384,7 +387,15 @@
             <div class="section-box">
                 <div class="section-header">BẢN ĐỒ</div>
                 <div style="padding: 10px;">
-                    <img src="https://loremflickr.com/300/200/map,city" style="width: 100%; border-radius: 4px;">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3893.003920959247!2d108.03816231535798!3d12.67759899105151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3171f7d26815852f%3A0x6009817757976690!2zODMgSMO5bmcgVmbGsMahbmcsIFRo4bqvbmcgTOG7o2ksIFRow6BuaCBwaOG7kSBCdcO0biBNYSBUaHXhu5l0LCDEkOG6r2sgTOG6r2ssIFZpZXRuYW0!5e0!3m2!1sen!2s!4v1677138295000!5m2!1sen!2s" 
+                        width="100%" 
+                        height="250" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
             </div>
 
