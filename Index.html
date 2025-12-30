@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trường THPT & Anh Ngữ Trẻ Trâu - Cổng Thông Tin Điện Tử</title>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Blue_book_icon.svg/1200px-Blue_book_icon.svg.png">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5;
+            font-size: 14px;
+            color: #333;
+        }
+        a { text-decoration: none; color: #333; transition: 0.2s; }
+        a:hover { color: #be0000; }
+        ul { list-style: none; padding: 0; margin: 0; }
+
+        /* HEADER */
+        .top-bar {
+            background-color: #be0000; /* Đỏ cờ */
+            color: white;
+            padding: 5px 0;
+            font-size: 12px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .banner {
+            background: linear-gradient(to bottom right, #0056b3, #003366);
+            color: white;
+            padding: 35px 0;
+            text-align: center;
+            /* Ảnh nền hoa văn nhẹ */
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+        }
+        .banner h1 { margin: 0; text-transform: uppercase; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); font-size: 26px; letter-spacing: 1px; }
+        .banner p { margin: 8px 0 0; font-size: 14px; opacity: 0.9; text-transform: uppercase; }
+
+        /* MENU */
+        .nav-bar {
+            background-color: #0056b3;
+            border-bottom: 3px solid #ffcc00; /* Viền vàng */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 15px; }
+        .nav-menu { display: flex; flex-wrap: wrap; }
+        .nav-menu li a {
+            display: block;
+            color: white;
+            padding: 12px 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 13px;
+        }
+        .nav-menu li a:hover { background-color: #003d6b; color: #ffcc00; }
+
+        /* MARQUEE */
+        .marquee-box {
+            background: white;
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .marquee-label {
+            background: #be0000;
+            color: white;
+            padding: 3px 10px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 15px;
+            border-radius: 3px;
+            white-space: nowrap;
+        }
+
+        /* LAYOUT */
+        .main-content {
+            display: grid;
+            grid-template-columns: 70% 28%; /* Tỉ lệ 7-3 */
+            gap: 2%;
+            margin-bottom: 40px;
+        }
+        @media (max-width: 768px) {
+            .main-content { grid-template-columns: 1fr; }
+        }
+
+        /* KHUNG TIN TỨC */
+        .section-box {
+            background: white;
+            border: 1px solid #e1e1e1;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        .section-header {
+            background: #f5f5f5;
+            padding: 10px 15px;
+            border-bottom: 2px solid #0056b3;
+            color: #0056b3;
+            font-weight: bold;
+            text-transform: uppercase;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+        
+        /* TIN TỨC CÓ SCROLL */
+        .news-list { 
+            padding: 0; 
+            height: 800px; /* Chiều cao cố định */
+            overflow-y: auto; /* Scroll dọc */
+        }
+        .news-list::-webkit-scrollbar { width: 6px; }
+        .news-list::-webkit-scrollbar-thumb { background-color: #ccc; border-radius: 3px; }
+
+        .news-item {
+            display: flex;
+            gap: 15px;
+            border-bottom: 1px solid #f0f0f0;
+            padding: 15px;
+            transition: 0.2s;
+        }
+        .news-item:hover { background-color: #fafafa; }
+        .news-thumb {
+            width: 130px;
+            height: 90px;
+            flex-shrink: 0;
+            background-color: #eee;
+            overflow: hidden;
+            border-radius: 3px;
+        }
+        .news-thumb img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .news-info h3 { margin: 0 0 5px; font-size: 15px; line-height: 1.4; }
+        .news-info h3 a { color: #2c3e50; font-weight: bold; }
+        .news-info h3 a:hover { color: #0056b3; }
+        .news-date { font-size: 11px; color: #888; margin-bottom: 5px; }
+        .news-desc { font-size: 13px; color: #555; margin: 0; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+        /* SIDEBAR BUTTONS */
+        .sidebar-btn {
+            display: block;
+            background: #0056b3;
+            color: white;
+            padding: 15px;
+            margin-bottom: 10px;
+            text-align: center;
+            border-radius: 4px;
+            font-weight: bold;
+            transition: 0.3s;
+            border: 1px solid #004494;
+            font-size: 13px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .sidebar-btn:hover { background: #be0000; border-color: #be0000; transform: translateY(-1px); }
+        
+        /* SIDEBAR LINKS */
+        .link-list li { border-bottom: 1px solid #eee; }
+        .link-list li a {
+            display: block;
+            padding: 10px 15px;
+            font-size: 13px;
+            background: url('https://upload.wikimedia.org/wikipedia/commons/4/4b/Blue_Arrow_Right.svg') no-repeat 95% center;
+            background-size: 12px;
+        }
+        .link-list li a:hover { color: #be0000; padding-left: 20px; background-color: #f9f9f9; }
+
+        /* FOOTER */
+        footer {
+            background: #222;
+            color: #ccc;
+            padding: 40px 0;
+            font-size: 13px;
+            border-top: 4px solid #be0000;
+        }
+        .footer-info h3 { color: white; margin-top: 0; text-transform: uppercase; font-size: 15px; }
+        .footer-info p { margin: 8px 0; line-height: 1.6; }
+        .footer-info i { width: 20px; text-align: center; margin-right: 5px; color: #ffcc00; }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="container">
+            CỔNG THÔNG TIN ĐIỆN TỬ HỆ THỐNG GIÁO DỤC TRE TRAU - DAK LAK EDUCATION
+        </div>
+    </div>
+
+    <div class="banner">
+        <div class="container">
+            <h1>TRƯỜNG THPT & ANH NGỮ TRẺ TRÂU</h1>
+            <p>TRE TRAU ENGLISH SCHOOL - DAK LAK</p>
+        </div>
+    </div>
+
+    <div class="nav-bar">
+        <div class="container">
+            <ul class="nav-menu">
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Tin tức - Sự kiện</a></li>
+                <li><a href="#">Tổ chức bộ máy</a></li>
+                <li><a href="#">Công khai giáo dục</a></li>
+                <li><a href="#">Tuyển sinh 2025</a></li>
+                <li><a href="#">Liên hệ</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="marquee-box">
+            <span class="marquee-label">THÔNG BÁO</span>
+            <marquee behavior="scroll" direction="left" style="flex: 1; font-size: 13px; color: #be0000; font-weight: bold;">
+                Chào mừng Quý thầy cô và các em học sinh truy cập Cổng thông tin điện tử Nhà trường - Hệ thống Email và Microsoft Teams đã được cập nhật phiên bản mới nhất năm 2025.
+            </marquee>
+        </div>
+    </div>
+
+    <div class="container main-content">
+        
+        <div class="left-col">
+            <div class="section-box">
+                <div class="section-header">
+                    <span>TIN TỨC - HOẠT ĐỘNG GIÁO DỤC</span>
+                    <a href="#" style="font-size: 11px; color: #666;">Xem tất cả >></a>
+                </div>
+                <div class="news-list">
+                    
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <img src="https://loremflickr.com/150/100/meeting,school?random=1" alt="Tin tuc">
+                        </div>
+                        <div class="news-info">
+                            <h3><a href="#">Hội nghị Cán bộ, Viên chức năm học 2025-2026 thành công tốt đẹp</a></h3>
+                            <div class="news-date">📅 30/12/2025 | 👁️ 1.250 lượt xem</div>
+                            <p class="news-desc">Sáng ngày 30/12, Nhà trường đã tổ chức Hội nghị nhằm đánh giá kết quả thực hiện nhiệm vụ năm học qua và đề ra phương hướng nhiệm vụ mới.</p>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <img src="https://loremflickr.com/150/100/exam,student?random=2" alt="Tin tuc">
+                        </div>
+                        <div class="news-info">
+                            <h3><a href="#">Công bố danh sách Đội tuyển Học sinh giỏi Quốc gia năm 2026</a></h3>
+                            <div class="news-date">📅 29/12/2025 | 👁️ 3.400 lượt xem</div>
+                            <p class="news-desc">Chúc mừng 05 em học sinh xuất sắc của trường đã vinh dự được chọn vào đội tuyển tỉnh tham dự kỳ thi HSG Quốc gia.</p>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <img src="https://loremflickr.com/150/100/computer,class?random=3" alt="Tin tuc">
+                        </div>
+                        <div class="news-info">
+                            <h3><a href="#">Triển khai đồng bộ hệ thống Microsoft 365 trong quản lý và dạy học</a></h3>
+                            <div class="news-date">📅 28/12/2025 | 👁️ 890 lượt xem</div>
+                            <p class="news-desc">Nhà trường yêu cầu toàn thể GV và HS kích hoạt tài khoản Outlook để nhận thông báo chính thức từ Ban Giám hiệu.</p>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <img src="https://loremflickr.com/150/100/soccer,sport?random=4" alt="Tin tuc">
+                        </div>
+                        <div class="news-info">
+                            <h3><a href="#">Khai mạc Giải bóng đá nam học sinh chào mừng ngày 9/1</a></h3>
+                            <div class="news-date">📅 27/12/2025 | 👁️ 1.890 lượt xem</div>
+                            <p class="news-desc">Không khí sôi động tại sân vận động trường trong ngày khai mạc giải bóng đá truyền thống "Tre Trau Cup" lần thứ V.</p>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <img src="https://loremflickr.com/150/100/vietnam,flag?random=5" alt="Tin tuc">
+                        </div>
+                        <div class="news-info">
+                            <h3><a href="#">Lễ chào cờ đầu tuần và Sinh hoạt chủ điểm "Tự hào Việt Nam"</a></h3>
+                            <div class="news-date">📅 25/12/2025 | 👁️ 2.100 lượt xem</div>
+                            <p class="news-desc">Đoàn trường tổ chức buổi sinh hoạt ngoại khóa nhằm giáo dục lòng yêu nước và tinh thần tự tôn dân tộc cho học sinh.</p>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <img src="https://loremflickr.com/150/100/tet,holiday?random=6" alt="Tin tuc">
+                        </div>
+                        <div class="news-info">
+                            <h3><a href="#">Thông báo lịch nghỉ Tết Nguyên Đán Ất Tỵ 2025</a></h3>
+                            <div class="news-date">📅 24/12/2025 | 👁️ 5.600 lượt xem</div>
+                            <p class="news-desc">Thực hiện công văn của UBND Tỉnh, Nhà trường thông báo thời gian nghỉ Tết cho học sinh từ ngày 20/01 đến hết ngày 05/02.</p>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <img src="https://loremflickr.com/150/100/volunteer,group?random=7" alt="Tin tuc">
+                        </div>
+                        <div class="news-info">
+                            <h3><a href="#">CLB Cộng đồng: Trao tặng 500 suất quà cho trẻ em vùng cao</a></h3>
+                            <div class="news-date">📅 22/12/2025 | 👁️ 1.450 lượt xem</div>
+                            <p class="news-desc">Chiến dịch "Mùa đông ấm" đã kết thúc thành công tốt đẹp với sự chung tay đóng góp của toàn thể phụ huynh và học sinh.</p>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <img src="https://loremflickr.com/150/100/ielts,study?random=8" alt="Tin tuc">
+                        </div>
+                        <div class="news-info">
+                            <h3><a href="#">Hội thảo: Chiến lược ôn thi IELTS 7.0+ cho học sinh THPT</a></h3>
+                            <div class="news-date">📅 20/12/2025 | 👁️ 980 lượt xem</div>
+                            <p class="news-desc">Chuyên gia khách mời đã có buổi chia sẻ bổ ích về lộ trình học tiếng Anh học thuật và du học.</p>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <img src="https://loremflickr.com/150/100/library,book?random=9" alt="Tin tuc">
+                        </div>
+                        <div class="news-info">
+                            <h3><a href="#">Thư viện giới thiệu sách tháng 12: "Nhật ký Đặng Thùy Trâm"</a></h3>
+                            <div class="news-date">📅 18/12/2025 | 👁️ 320 lượt xem</div>
+                            <p class="news-desc">Cuốn sách là tư liệu quý giá giáo dục lý tưởng sống cho thế hệ trẻ ngày nay.</p>
+                        </div>
+                    </div>
+
+                    <div class="news-item">
+                        <div class="news-thumb">
+                            <img src="https://loremflickr.com/150/100/safety,fire?random=10" alt="Tin tuc">
+                        </div>
+                        <div class="news-info">
+                            <h3><a href="#">Tập huấn kỹ năng Phòng cháy chữa cháy và Cứu nạn cứu hộ</a></h3>
+                            <div class="news-date">📅 15/12/2025 | 👁️ 2.300 lượt xem</div>
+                            <p class="news-desc">Phối hợp với Công an PCCC Tỉnh tổ chức diễn tập phương án chữa cháy giả định tại khu nhà C.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="right-col">
+            
+            <div class="section-box" style="border: none; background: none; box-shadow: none;">
+                <a href="https://outlook.office.com" class="sidebar-btn" target="_blank" style="background: #0078d4;">
+                    ĐĂNG NHẬP EMAIL (OUTLOOK)
+                </a>
+                <a href="https://teams.microsoft.com" class="sidebar-btn" target="_blank" style="background: #464775;">
+                    VÀO LỚP HỌC (TEAMS)
+                </a>
+                <a href="https://drive.google.com" class="sidebar-btn" target="_blank" style="background: #0f9d58;">
+                    KHO TÀI LIỆU SỐ (DRIVE)
+                </a>
+            </div>
+
+            <div class="section-box">
+                <div class="section-header">LIÊN KẾT WEBSITE</div>
+                <ul class="link-list">
+                    <li><a href="https://moet.gov.vn" target="_blank">Bộ Giáo dục và Đào tạo</a></li>
+                    <li><a href="https://gddt.daklak.gov.vn" target="_blank">Sở GD&ĐT Đắk Lắk</a></li>
+                    <li><a href="https://thitotnghiep.thptquocgia.edu.vn" target="_blank">Cổng thi Tốt nghiệp THPT</a></li>
+                    <li><a href="https://igiaoduc.vn" target="_blank">Kho học liệu số Quốc gia</a></li>
+                    <li><a href="https://dichvucong.gov.vn" target="_blank">Cổng Dịch vụ công Quốc gia</a></li>
+                </ul>
+            </div>
+
+            <div class="section-box">
+                <div class="section-header">THỐNG KÊ TRUY CẬP</div>
+                <div style="padding: 15px; font-size: 13px; line-height: 1.8;">
+                    <p>🟢 Đang online: <strong>42</strong></p>
+                    <p>📅 Hôm nay: <strong>1,250</strong></p>
+                    <p>📅 Tháng này: <strong>45,600</strong></p>
+                    <p>🌏 Tổng lượt truy cập: <strong>1,250,500</strong></p>
+                </div>
+            </div>
+
+            <div class="section-box">
+                <div class="section-header">BẢN ĐỒ</div>
+                <div style="padding: 10px;">
+                    <img src="https://loremflickr.com/300/200/map,city" style="width: 100%; border-radius: 4px;">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-info">
+                <h3>TRƯỜNG ANH NGỮ TRẺ TRÂU (TRE TRAU ENGLISH SCHOOL)</h3>
+                <p>📍 <strong>Địa chỉ:</strong> 83 Hùng Vương, Tp Buôn Ma Thuột, Đắk Lắk, Việt Nam</p>
+                <p>📞 <strong>Điện thoại:</strong> (+84) 345 961 747</p>
+                <p>📧 <strong>Email:</strong> contact@tretrau.edu.vn</p>
+                <p>🌐 <strong>Website:</strong> www.tretrau.edu.vn</p>
+                <div style="margin-top: 20px; border-top: 1px solid #444; padding-top: 10px; font-size: 12px; color: #888;">
+                    <p>Bản quyền © 2025 thuộc về Hệ thống Giáo dục Tre Trau. Giấy phép hoạt động giáo dục số 123/GP-SGDĐT do Sở Giáo dục và Đào tạo Đắk Lắk cấp.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
